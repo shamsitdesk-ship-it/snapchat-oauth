@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Snapchat OAuth Callback</title>
+</head>
+<body>
+    <h1>Snapchat OAuth Callback</h1>
+
+    <p id="status">Waiting for Snapchat authorization...</p>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get("code");
+        const error = params.get("error");
+
+        if (code) {
+            document.getElementById("status").innerHTML =
+                "<h2>Authorization code received</h2>" +
+                "<p>Copy the code from the URL bar.</p>";
+        } else if (error) {
+            document.getElementById("status").innerHTML =
+                "<h2>Authorization failed</h2>" +
+                "<p>" + error + "</p>";
+        }
+    </script>
+</body>
+</html>
